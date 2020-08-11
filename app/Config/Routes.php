@@ -32,6 +32,17 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+$routes->group('api', function($routes){
+	$routes->group('bhut', function($routes) {
+		$routes->get('listCars', 'Bhut::listCars');
+		$routes->post('createCar', 'Bhut::createCar');
+		$routes->get('searchListCars/(:any)', 'Bhut::searchListCars/$1');
+		$routes->get('logs', 'Log::findAll');
+	});
+});
+
+
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
